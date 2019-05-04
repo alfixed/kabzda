@@ -1,16 +1,22 @@
-.App {
+.app-wrapper {
   text-align: left;
-  
+  display: grid;
+  grid-template-areas: "h h" "n c";
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-gap: 10px;
 }
 
-.App-logo {
+.logo {
   padding-left: 10px;
+  padding-top: 10px;
   animation: App-logo-spin infinite 20s linear;
-  height: 30px;
+  height: 50px;
   pointer-events: none;
 }
 
-.App-header {
+.header {
+  grid-area: h;
   background-color: #282c34;
   flex-direction: column;
   align-items: left;
@@ -18,8 +24,17 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.nav {
+  grid-area: n;
+  padding-left: 10px;
+}
+
+.content {
+  grid-area: c;
+}
+
+.content img {
+  height: 250px;
 }
 
 @keyframes App-logo-spin {
