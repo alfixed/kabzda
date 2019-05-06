@@ -1,6 +1,6 @@
 import React from 'react';
-import snow from '../snow.jpg'
-import owl from '../owl.jpg'
+import snow from '../img/snow.jpg'
+import owl from '../img/owl.jpg'
 
 const Profile = () => {
     return (
