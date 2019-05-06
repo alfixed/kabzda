@@ -8,10 +8,10 @@ const Profile = () => {
   return (
     <div>
       <div>
-        <img src={snow}/>
+        <img className={ classes.img }src={snow}/>
       </div>
       <div>
-        <img src={owl}/>
+        <img className={ classes.img } src={owl}/>
       </div>
       <MyPosts/>
     </div>
