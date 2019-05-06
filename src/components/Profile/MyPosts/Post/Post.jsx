@@ -2,14 +2,14 @@ import React from 'react';
 import ava from '../../../../img/ava.jpg'
 import classes from './Post.module.css';
 
-const Post = () => {
+const Post = (props) => {
     return (
         <div className={classes.post}>
             <div className={classes.item}>
                 <img src={ ava } />
-                post 1
+                { props.message }
                 <div>
-                    <span>like</span>
+                    <span>like {props.like }</span>
                 </div>
             </div>
         </div>
