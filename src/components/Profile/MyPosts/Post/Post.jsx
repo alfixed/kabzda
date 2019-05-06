@@ -1,11 +1,11 @@
 import React from 'react';
 import ava from '../../../../img/ava.jpg'
-import classes from './Post.module.css';
+import s from './Post.module.css';
 
 const Post = (props) => {
     return (
-        <div className={classes.post}>
-            <div className={classes.item}>
+        <div className={s.post}>
+            <div className={s.item}>
                 <img src={ ava } />
                 { props.message }
                 <div>
