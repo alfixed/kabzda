@@ -5,17 +5,17 @@ import classes from './Profile.module.css';
 import MyPosts from './MyPosts/MyPosts';
 
 const Profile = () => {
-    return (
-        <div className={ classes.content }>
-        <div>
-          <img src={snow} />
-        </div>
-        <div>
-          <img src={owl} />
-        </div>
-        <MyPosts />
+  return (
+    <div>
+      <div>
+        <img src={snow}/>
       </div>
-    );
+      <div>
+        <img src={owl}/>
+      </div>
+      <MyPosts/>
+    </div>
+  );
 }
 
 export default Profile;
