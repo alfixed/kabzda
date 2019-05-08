@@ -46,28 +46,29 @@ let store = {
         }
     },
     _callSubscriber() { },
+
     getState() {
         return this._state;
     },
-    addPost() {
-        let newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-            likesCount: 0
-        };
-
-        this._state.profilePage.posts.push(newPost);
-        this._callSubscriber();
-        this._state.profilePage.newPostText = '';
-    },
-
-    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber();
-    },
-
     subscribe(observer) {
         this._callSubscriber = observer;
+    },
+
+    dispatch(action) {
+        if (action.type === 'ADD_POST') {
+            let newPost = {
+                id: 5,
+                message: this._state.profilePage.newPostText,
+                likesCount: 0
+            };
+    
+            this._state.profilePage.posts.push(newPost);
+            this._state.profilePage.newPostText = '';
+            this._callSubscriber();
+        } else if (action.type === 'UPDATE_NEW_POST_TEXT') {
+            this._state.profilePage.newPostText = action.payload;
+        this._callSubscriber();
+        }
     }
 }
 
