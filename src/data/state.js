@@ -1,7 +1,5 @@
-const ADD_POST = 'ADD_POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
-const SEND_MESSAGE = 'SEND_MESSAGE';
+import profileReducer from './profile-reducer';
+import dialogsReducer from './dialogs-reducer';
 
 let store = {
     _state: {
@@ -61,54 +59,9 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let newPost = {
-                id: 5,
-                message: this._state.profilePage.newPostText,
-                likesCount: 0
-            };
-    
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber();
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.payload;
-            this._callSubscriber();
-        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-            this._state.dialogsPage.newMessageText = action.payload;
-            this._callSubscriber();
-        } else if (action.type === SEND_MESSAGE) {
-            let text = this._state.dialogsPage.newMessageText;
-            this._state.dialogsPage.newMessageText = '';
-            this._state.dialogsPage.messages.push({id: 4, message: text});
-            this._callSubscriber();
-        }
-    }
-}
-
-export const addPostCreator = () => {
-    return {
-        type: ADD_POST
-    }
-}
-
-export const updateNewPostTextCreator = (text) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        payload: text
-    }
-}
-
-export const updateMessageTextCreator = (text) => {
-    return {
-        type: UPDATE_NEW_MESSAGE_TEXT,
-        payload: text
-    }
-}
-
-export const sendMessageCreator = () => {
-    return {
-        type: SEND_MESSAGE
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._callSubscriber();
     }
 }
 
