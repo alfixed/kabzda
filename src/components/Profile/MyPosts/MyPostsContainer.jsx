@@ -4,7 +4,7 @@ import {addPostCreator, updateNewPostTextCreator} from '../../../redux/profile-r
 import {connect} from 'react-redux';
 
 let mapStateToProps = (state) => {
-    return {posts: state.profilePage.posts, newPostText: state.newPostText}
+    return {posts: state.profilePage.posts, newPostText: state.profilePage.newPostText}
 }
 
 let mapDispatchToProps = (dispatch) => {
