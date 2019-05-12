@@ -3,28 +3,7 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 
 let initialState = {
-    users: [
-        {
-            id: 1,
-            fullName: 'Igor',
-            followed: true,
-            status: 'I am a boss',
-            location: { city: 'Moscow', country: 'Russia' }
-        }, {
-            id: 2,
-            fullName: 'Dima',
-            followed: true,
-            status: 'I am a boss too',
-            location: { city: 'Moscow', country: 'Russia' }
-        }, {
-            id: 3,
-            fullName: 'Sergei',
-            followed: false,
-            status: 'I am a loser',
-            location: { city: 'Klin', country: 'Russia' }
-        }
-    ],
-    newPostText: ''
+    users: []
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -72,7 +51,7 @@ export const unfollowAC = (userId) => {
     }
 }
 
-export const setUsers = (users) => {
+export const setUsersAC = (users) => {
     return {
         type: SET_USERS,
         users
