@@ -1,23 +1,23 @@
-import React from 'react';
+import React, {Component} from 'react';
 import s from './Users.module.css';
 import Axios from 'axios';
 import ava from '../../img/ava1.jpg'
 
-const Users = (props) => {
-    let getUsers = () => {
-        if (props.users.length === 0) {
-            Axios
-                .get('https://social-network.samuraijs.com/api/1.0/users')
-                .then(responce => {
-                    props.setUsers(responce.data.items);
-                })
-        }
+class Users extends Component {
+
+    componentDidMount() {
+        Axios
+            .get('https://social-network.samuraijs.com/api/1.0/users')
+            .then(responce => {
+                this
+                    .props
+                    .setUsers(responce.data.items);
+            });
     }
 
-    return (
-        <div>
-            <button onClick={getUsers}>Get users</button>
-            {props
+    render() {
+        return <div>
+            {this.props
                 .users
                 .map(u => <div key={u.id}>
                     <span>
@@ -32,11 +32,15 @@ const Users = (props) => {
                             {u.followed
                                 ? <button
                                         onClick={() => {
-                                        props.unfollow(u.id)
+                                        this
+                                            .props
+                                            .unfollow(u.id)
                                     }}>Unfollow</button>
                                 : <button
                                     onClick={() => {
-                                    props.follow(u.id)
+                                    this
+                                        .props
+                                        .follow(u.id)
                                 }}>Follow</button>}
                         </div>
                     </span>
@@ -53,7 +57,7 @@ const Users = (props) => {
                 </div>)
 }
         </div>
-    );
+    }
 }
 
 export default Users;
