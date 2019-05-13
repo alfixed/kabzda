@@ -1,6 +1,7 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
+const CLEAR_USERS = 'CLEAR_USERS';
 
 let initialState = {
     users: []
@@ -33,6 +34,11 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 users: [...state.users, ...action.users]
             }
+        case CLEAR_USERS:
+            return {
+                ...state,
+                users: []
+            }
         default: return state;
     }
 }
@@ -55,6 +61,13 @@ export const setUsersAC = (users) => {
     return {
         type: SET_USERS,
         users
+    }
+}
+
+export const clearUsersAC = () => {
+    return {
+        type: CLEAR_USERS,
+        users: []
     }
 }
 

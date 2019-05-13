@@ -15,6 +15,10 @@ class Users extends Component {
             });
     }
 
+    componentWillUnmount() {
+        this.props.clearUsers();
+    }
+
     render() {
         return <div>
             {this.props
