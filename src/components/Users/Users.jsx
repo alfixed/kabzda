@@ -1,11 +1,12 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 import s from './Users.module.css';
 import ava from '../../img/ava1.jpg'
 
 let Users = (props) => {
     return <div>
         <div>
-            {props
+            {props 
                 .pages
                 .map(p => <span
                     className={props.currentPage === p
@@ -18,13 +19,15 @@ let Users = (props) => {
         {props
             .users
             .map(u => <div key={u.id}>
-                <span>
+                <span> 
                     <div >
-                        <img
-                            className={s.img}
-                            src={u.photos.small != null
-                            ? u.photos.small
-                            : ava}/>
+                        <NavLink to={'/profile/' + u.id}>
+                            <img
+                                className={s.img}
+                                src={u.photos.small != null
+                                ? u.photos.small
+                                : ava}/>
+                        </NavLink>
                     </div>
                     <div>
                         {u.followed
