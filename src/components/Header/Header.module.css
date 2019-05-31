@@ -7,25 +7,33 @@
     color: white;
   }
   
-  .nav {
-    grid-area: n;
-    padding-left: 10px;
-  }
+.nav {
+  grid-area: n;
+  padding-left: 10px;
+}
 
-  .logo {
-    padding-left: 10px;
-    padding-top: 10px;
-    animation: App-logo-spin infinite 20s linear;
-    height: 50px;
-    pointer-events: none;
-  }
+.logo {
+  padding-left: 10px;
+  padding-top: 10px;
+  animation: App-logo-spin infinite 20s linear;
+  height: 50px;
+  pointer-events: none;
+}
 
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+.loginBlock {
+  float: right;
+}
+
+.loginBlock a{
+  color: white;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
   }
+  to {
+    transform: rotate(360deg);
+  }
+}
   
