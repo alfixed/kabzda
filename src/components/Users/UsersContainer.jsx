@@ -30,7 +30,7 @@ class UsersContainer extends Component {
             .props
             .toggleIsFetching(true);
         Axios
-            .get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            .get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {withCredentials: true})
             .then(r => {
                 this
                     .props
