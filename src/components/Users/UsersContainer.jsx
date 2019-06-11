@@ -12,7 +12,7 @@ import {
 import Axios from 'axios';
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader';
-import {getUsers} from '../../api/api';
+import {usersAPI} from '../../api/api';
 
 class UsersContainer extends Component {
 
@@ -30,7 +30,7 @@ class UsersContainer extends Component {
         this
             .props
             .toggleIsFetching(true);
-        getUsers(pageNumber, this.props.pageSize).then(r => {
+            usersAPI.getUsers(pageNumber, this.props.pageSize).then(r => {
             this
                 .props
                 .setUsers(r.items);
