@@ -12,6 +12,7 @@ import {
 import Axios from 'axios';
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader';
+import {getUsers} from '../../api/api';
 
 class UsersContainer extends Component {
 
@@ -29,19 +30,17 @@ class UsersContainer extends Component {
         this
             .props
             .toggleIsFetching(true);
-        Axios
-            .get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {withCredentials: true})
-            .then(r => {
-                this
-                    .props
-                    .setUsers(r.data.items);
-                this
-                    .props
-                    .setTotalUsersCount(r.data.totalCount);
-                this
-                    .props
-                    .toggleIsFetching(false);
-            });
+        getUsers(pageNumber, this.props.pageSize).then(r => {
+            this
+                .props
+                .setUsers(r.items);
+            this
+                .props
+                .setTotalUsersCount(r.totalCount);
+            this
+                .props
+                .toggleIsFetching(false);
+        });
 
     }
 
