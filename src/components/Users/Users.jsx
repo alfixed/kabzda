@@ -33,7 +33,9 @@ let Users = (props) => {
                     <div>
                         {u.followed
                             ? <button
+                                    disabled={props.followingInProgress.some( id => id === u.id)}
                                     onClick={() => {
+                                    props.toggleIsFollowingProgress(true, u.id);
                                     Axios
                                         .delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
                                         withCredentials: true,
@@ -45,10 +47,13 @@ let Users = (props) => {
                                             if (r.data.resultCode == 0) {
                                                 props.unfollow(u.id);
                                             }
+                                            props.toggleIsFollowingProgress(false, u.id);
                                         });
                                 }}>Unfollow</button>
                             : <button
+                                disabled={props.followingInProgress.some( id => id === u.id)} 
                                 onClick={() => {
+                                props.toggleIsFollowingProgress(true, u.id);
                                 Axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
                                     withCredentials: true,
                                     headers: {
@@ -58,6 +63,7 @@ let Users = (props) => {
                                     if (r.data.resultCode == 0) {
                                         props.follow(u.id);
                                     }
+                                    props.toggleIsFollowingProgress(false, u.id);
                                 });
                             }}>Follow</button>}
                     </div>
